@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Temp File Save System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="mode/file/css/bootstrap.min.css_v=20180421.css  " rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="mode/file/css/webuploader.css">
+    <link href="mode/file/css/upload.css" rel="stylesheet">
+    <script src="mode/file/js/jquery.min.js"></script>
+    <script src="mode/file/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <style>
+
+    </style>
+</head>
+<body>
+   
+    <div class="container kv-main">
+
+<div class="page-header">
+    <h1>临时文件存放系统/Temp File Save System</h1>每个文件最大不超过15MB，一次只能上传一个文件/ 15 MB max per file. One file one request.
+</div>
+ <div id="info_data">
+     <ul>
+         <li>这是一个小巧简单文件中转系统.使用本系统可以快速的将您设备上的文件存放到我们服务器上,从而避免在公共的电脑上登录QQ,插入U盘，避免个人信息泄露，感染病毒等.</li>
+         <li>点击<a href="file.php?fun=down">取回文件</a> 跳转 到新页面输入文件唯一识别代码提取文件</li>
+         <li>本系统使用 阿里云OSS 提供文件存储支持,所有上传的文件将会在服务器上缓存3天,到期后自动删除</li>
+         <li>本系统严格限制文件下载次数,每个临时文件下载(自行选择,默认3次,最多5次)次下载地址自动失效</li>
+         <li>本系统为免费的公益项目,由一群热情洋溢的小伙子们自费运行,我们欢迎个人和组织捐助</li>
+        <!-- <li style="color:red">特别知悉:此系统接入&nbsp;<a href="https://www.iw3c.top/index/index.php/adcf.html">IW3C--ADCF</a>&nbsp; 计划,当您上传或下载文件时,即视为您同意此并理解此方案</li>-->
+       </ul>
+ </div>
+ <table width="95%" align="center" class="table table-bordered table-hover table-striped">
+     <tr><td>文件唯一识别代码:</td><td><input id="file_code"></td><td style="font-size: x-small;color: grey">用来区分文件的随机字符串，系统会从常用英语单词中随机抽取大写单词</td><td id="code_status" style="color: green">可以使用</td></tr>
+     <tr><td>文件最大下载次数:</td><td>
+         <select id="download_max_num"><option value="1">1</option><option value="2">2</option><option value="3" selected="selected">3</option><option value="4">4</option><option value="5">5</option></select>
+     </td><td style="font-size: x-small;color: grey">文件最大下载次数，达到最大下载次数后文件将会被删除，同时自动释放文件识别代码</td><td id="download_status" style="color: green">可以使用</td></tr>
+     <tr><td colspan="3" align="center">
+         <div class="input-group input-group-sm"  >
+
+             <input id="file_name" type="text" class="form-control " style="width: 800px" > <span class="input-group-btn"><button class="btn btn-default  btn-success" type="button" onclick="ClickInput()">选择文件</button></span></div>
+         <hr/>
+         <div class="progress" style="width: 800px"><div id="upload_per" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"><span class="sr-only"></span></div></div></td>
+         <td style="vertical-align: middle;"><button onclick="file_submit()" class="btn btn-default  btn-danger" type="button">确认上传</button></td></tr>
+     <tr ><td>文件下载地址</td><td colspan="3" id="file_down_show"></td></tr>
+     <tr><td>文件过期时间</td><td colspan="3" id="file_time_show"></td></tr>
+ </table><hr/><br/>
+
+        <input id="file_upload" type="file" multiple="" class="file" data-overwrite-initial="false" data-min-file-count="1" data-max-file-count="1" name="file_upload" style="display: none" onchange="Upload_Sign(this)">
+    </div>
+    <footer class="footer">
+        <div class="container">
+              <p class="text-muted" align=center>Copyright &#9400; 2019 iw3c.top All rights reserved &nbsp;<a href="https://www.iw3c.top/index/">南京航天航空大学金城学院 A2101实验室-IW3C</a></p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="mode/file/js/upload.js"></script>
+</body>
+</html>
